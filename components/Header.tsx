@@ -28,10 +28,6 @@ const Header: React.FC<ChildrenProp> = ({ children, styles }) => {
 
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut();
-
-        player.reset();
-        router.refresh();
-
         if (error) {
             toast.error(error.message);
         } else {
@@ -41,6 +37,8 @@ const Header: React.FC<ChildrenProp> = ({ children, styles }) => {
                     color: "#fff",
                 },
             });
+            player.reset();
+            router.push("/");
         }
     };
 
