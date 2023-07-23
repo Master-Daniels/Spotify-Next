@@ -98,14 +98,14 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
                     <LikeButton songId={song.id} />
                 </div>
             </div>
-            <div className="flex md:hidden col-auto w-full justify-end items-center">
+            <div className="flex md:hidden col-auto w-full justify-end items-center gap-x-3">
                 <div
                     onClick={handlePlay}
                     className="h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer hover:scale-110 transition"
                 >
                     <Icon className="text-black" size={20} />
                 </div>
-                <div onClick={player.reset} className="cursor-pointer">
+                <div onClick={player.reset} className="cursor-pointer hover:scale-110 transition duration-1000">
                     <RxCross2 size={20} />
                 </div>
             </div>
@@ -131,7 +131,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
                 <div className="flex items-center gap-x-2 w-[150px]">
                     <VolumeIcon onClick={toggleMute} className="cursor-pointer" size={30} />
                     <Slider value={volume} onChange={(value) => setVolume(value)} />
-                    <div onClick={player.reset} className="cursor-pointer">
+                    <div onClick={player.reset} className="cursor-pointer hover:scale-110 transition duration-1000">
                         <RxCross2 size={20} />
                     </div>
                 </div>

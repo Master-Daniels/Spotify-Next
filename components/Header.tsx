@@ -10,21 +10,31 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
+import { AiOutlinePlus } from "react-icons/ai";
 
 import { Button } from ".";
-import useAuthModal from "@/hooks/useAuth";
-import { useUser } from "@/hooks/useUser";
+
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
+
 import { toast } from "react-hot-toast";
+
+import { useUser } from "@/hooks/useUser";
+
 import usePlayer from "@/hooks/usePlayer";
+import useSubscribeModal from "@/hooks/useSubscribeModal";
+import useAuthModal from "@/hooks/useAuth";
+import useUploadModal from "@/hooks/useUpload";
 
 const Header: React.FC<ChildrenProp> = ({ children, styles }) => {
     const router = useRouter();
     const player = usePlayer();
+
     const { onOpen } = useAuthModal();
+    const subscribeModal = useSubscribeModal();
+    const uploadModal = useUploadModal();
 
     const supabaseClient = useSupabaseClient();
-    const { user } = useUser();
+    const { user, subscription } = useUser();
 
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut();
@@ -40,6 +50,15 @@ const Header: React.FC<ChildrenProp> = ({ children, styles }) => {
             player.reset();
             router.push("/");
         }
+    };
+
+    const handleUpload = () => {
+        if (!user) return onOpen();
+
+        if (!subscription) return subscribeModal.onOpen();
+
+        // open upload modal
+        return uploadModal.onOpen();
     };
 
     return (
@@ -83,6 +102,15 @@ const Header: React.FC<ChildrenProp> = ({ children, styles }) => {
                         className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
                     >
                         <BiSearch size={20} className="text-black" />
+                    </button>
+                    <button
+                        onClick={() => router.push("/search")}
+                        className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
+                    >
+                        <AiOutlinePlus
+                            onClick={handleUpload}
+                            className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
+                        />
                     </button>
                 </div>
                 <div className="flex justify-between items-center gap-x-4">
