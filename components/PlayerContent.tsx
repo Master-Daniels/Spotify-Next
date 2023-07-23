@@ -106,7 +106,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
                     <Icon className="text-black" size={20} />
                 </div>
                 <div onClick={player.reset} className="cursor-pointer hover:scale-110 transition duration-1000">
-                    <RxCross2 size={20} />
+                    <RxCross2 size={30} />
                 </div>
             </div>
             <div className="hidden md:flex h-full justify-center items-center w-full max-w-[722px] gap-x-6">
