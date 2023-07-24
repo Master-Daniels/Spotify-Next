@@ -5,7 +5,7 @@ import { useUser } from "@/hooks/useUser";
 import useAuthModal from "@/hooks/useAuth";
 import useUploadModal from "@/hooks/useUpload";
 import { Song } from "@/types";
-import { MediaItem } from ".";
+import { MediaItem, LikeButton } from ".";
 import useOnPlay from "@/hooks/useOnPlay";
 import useSubscribeModal from "@/hooks/useSubscribeModal";
 
@@ -45,8 +45,12 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
             </div>
             <div className="flex flex-col gap-y-2 mt-4 px-3">
                 {songs.map((item) => (
-                    <div key={item.id} className="cursor-pointer hover:bg-neutral-700/50">
+                    <div
+                        key={item.id}
+                        className="cursor-pointer hover:bg-neutral-700/50 rounded-md flex justify-between"
+                    >
                         <MediaItem onClick={(id: string) => onPlay(id)} data={item} />
+                        <LikeButton songId={item.id} />
                     </div>
                 ))}
             </div>
