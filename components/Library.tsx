@@ -47,7 +47,7 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
                 {songs.map((item) => (
                     <div
                         key={item.id}
-                        className="cursor-pointer hover:bg-neutral-700/50 rounded-md flex justify-between"
+                        className="cursor-pointer hover:bg-neutral-700/50 transition duration-1000 rounded-md flex justify-between items-center pr-2"
                     >
                         <MediaItem onClick={(id: string) => onPlay(id)} data={item} />
                         <LikeButton songId={item.id} />
