@@ -93,19 +93,19 @@ const Header: React.FC<ChildrenProp> = ({ children, styles }) => {
                 <div className="flex md:hidden gap-x-4 items-center">
                     <button
                         onClick={() => router.push("/")}
-                        className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
+                        className="rounded-full p-1 sm:p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
                     >
                         <HiHome size={20} className="text-black" />
                     </button>
                     <button
                         onClick={() => router.push("/search")}
-                        className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
+                        className="hidden rounded-full p-1 sm:p-2 bg-white sm:flex items-center justify-center hover:opacity-75 transition"
                     >
                         <BiSearch size={20} className="text-black" />
                     </button>
                     <button
                         onClick={() => router.push("/search")}
-                        className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
+                        className="rounded-full p-1 sm:p-2 bg-white hidden  sm:flex items-center justify-center hover:opacity-75 transition"
                     >
                         <AiOutlinePlus onClick={handleUpload} size={20} className="text-black" />
                     </button>
@@ -135,8 +135,7 @@ const Header: React.FC<ChildrenProp> = ({ children, styles }) => {
                             <div>
                                 <Button
                                     onClick={() => onOpen("Sign Up")}
-                                    styles="bg-tranparent text-black font-medium px-5 py-1 hover:bg-white
-                                bord transition hover:scale-110 duration-1000"
+                                    styles="bg-tranparent text-black font-medium px-4 sm:px-5 text-sm sm:text-base py-1 hover:bg-white transition duration-1000"
                                 >
                                     Sign Up
                                 </Button>
@@ -144,7 +143,7 @@ const Header: React.FC<ChildrenProp> = ({ children, styles }) => {
                             <div>
                                 <Button
                                     onClick={() => onOpen("Log In")}
-                                    styles="bg-white text-black font-medium px-6 py-1 hover:bg-green-400 hover:text-white border-none outline-none hover:scale-110 transition duration-1000"
+                                    styles="bg-white text-black font-medium px-4 sm:px-6 py-1 hover:bg-green-400 hover:text-white border-none outline-none hover:scale-110 transition duration-1000 text-sm sm:text-base"
                                 >
                                     Log In
                                 </Button>
